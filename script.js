@@ -11,7 +11,7 @@ $('#country-name').keyup(e => {
 });
 
 function searchCountries() {
-    const countryName = $('#country-name').val();
+    let countryName = $('#country-name').val();
     if (!countryName.length) countryName = 'Poland';
     $.getJSON(url + countryName)
         .done(showCountriesList)
