@@ -1,0 +1,86 @@
+
+body {
+    background-color: #e1e4e9;
+
+    font-family: 'Exo', sans-serif;
+
+/*    letter-spacing: 1px;*/
+}
+
+
+.header {
+    text-align: center;
+}
+
+.title {
+    font-size: 35px;
+    color: #414858;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.list {
+    color: #414858;
+    margin-top: 50px;
+}
+
+.search {
+    background-color: #6a8ba3;
+    color: #fff;
+     font-family: 'Roboto', sans-serif;
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    height: 33px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input {
+    padding: 0 10px;
+    height: 30px;
+}
+.country {
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.name {
+    font-size: 40px;
+    font-weight: bold;
+    color: #414858;
+}
+.row td:nth-child(2){
+    padding-left: 15px;
+}
+
+.flag {
+    height: 100px;
+    width: auto;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+  }
+
+.informations {
+    background-color: #6D7993; 
+    font-weight: bold;
+    min-width: 400px;
+    width: 100%;
+    height: 40px;
+    color: #fff;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.value {
+    background-color: #D5D5D5;
+    width: 400px;
+    color: #414858;
+    padding: 10px;
+}
+
+.description {
+    background-color: #9099A2;
+    color: #FFF;
+    font-weight: bold;
+    padding: 10px;
+}
+
