@@ -1,86 +1,78 @@
-var url = 'https://restcountries.eu/rest/v2/name/';
-var countriesList = $('#countries');
+const url = 'https://restcountries.eu/rest/v2/name/';
+const countriesList = $('#countries');
 
 $('#search').click(searchCountries);
 
 //run fuction on a keypress event
-$('#country-name').keyup(function (e) {
+$('#country-name').keyup(e => {
     if (e.which === 13) {
         searchCountries();
     }
 });
 
 function searchCountries() {
-    var countryName = $('#country-name').val();
+    const countryName = $('#country-name').val();
     if (!countryName.length) countryName = 'Poland';
-    $.ajax({
-        url: url + countryName,
-        method: 'GET',
-        success: showCountriesList,
-        error: showError
-    });
+    $.getJSON(url + countryName)
+        .done(showCountriesList)
+        .fail(showError)
 }
 
 //Function execute in case of 404 error
-function showError() {
+const showError = () => {
     countriesList.empty();
     $('.list').remove();
     $('#country-name').after('<h2 class="list">Country not found</p>');
 }
 
 // Show country
-function showCountriesList(resp) {
+
+const showCountriesList = (resp) => {
     countriesList.empty();
     $('.list').remove();
     $('#country-name').after('<h2 class="list">List of countries</p>');
-    resp.forEach(function (item) {
-
-        //main table
-        var table = $('<table>').addClass('country').appendTo(countriesList);
-        
-       //flag and country name
-        var row = $('<tr>').addClass('row').appendTo(table);
-        var flagTd = $('<td>').appendTo(row);
-        $('<img>').addClass('flag').attr('src', item.flag).appendTo(flagTd);
-        $('<td>').text(item.name).addClass('name').appendTo(row);
-
-        //background informations row
-        var row = $('<tr>').appendTo(table);
-        $('<td>').text("Background Informations").addClass('informations').attr('colspan', '2').appendTo(row);
-
-        //Capital
-        var row = $('<tr>').addClass('row').appendTo(table);
-        $('<td>').text("Capital: ").addClass('description').appendTo(row);
-        $('<td>').text(item.capital).addClass('value').appendTo(row);
-
-        //Area
-        var row = $('<tr>').addClass('row').appendTo(table);
-        $('<td>').text("Area: ").addClass('description').appendTo(row);
-        var area = $('<td>').text(item.area + ' km').addClass('value').appendTo(row);
-        var sup = $('<sup>').text("2").appendTo(area);
-
-        //Population
-        var row = $('<tr>').addClass('row').appendTo(table);
-        $('<td>').text("Population: ").addClass('description').appendTo(row);
-        $('<td>').text(item.population).addClass('value').appendTo(row);
-
-        //languages
-        var row = $('<tr>').addClass('row').appendTo(table);
-        $('<td>').text("Languages: ").addClass('description').appendTo(row);
-        $('<td>').text(item.languages[0].name).addClass('value').appendTo(row);
-
-        //Currency
-        var row = $('<tr>').addClass('row').appendTo(table);
-        $('<td>').text("Currency: ").addClass('description').appendTo(row);
-        $('<td>').text(item.currencies[0].code).addClass('value').appendTo(row);
-
-        //Timezone
-        var row = $('<tr>').addClass('row').appendTo(table);
-        $('<td>').text("Timexone: ").addClass('description').appendTo(row);
-        $('<td>').text(item.timezones).addClass('value').appendTo(row);
-
-
-        var row = $('<tr>').addClass('informations').appendTo(table);
-        $('<td>').attr('colspan', '2').appendTo(row)
+    resp.forEach(item => {
+        //create table
+        const table = $(`
+        <table class="country">
+            <tr class="row">
+                <td>
+                    <img src="${item.flag}" alt="" class="flag">
+                </td>
+                <td class="name">${item.name}</td>
+            </tr>
+            <tr>
+                <td class="informations" colspan="2">Background Informations</td>
+            </tr>
+            <tr>
+                <td class="description">Capital: </td>
+                <td class="value">${item.capital}</td>
+            </tr>
+            <tr>
+                <td class="description">Area: </td>
+                <td class="value">${item.area} km<sup>2</sup></td>
+            </tr>
+            <tr>
+                <td class="description">Population: </td>
+                <td class="value">${item.population}</td>
+            </tr>
+            <tr>
+                <td class="description">Languages: </td>
+                <td class="value">${item.languages[0].name}</td>
+            </tr>
+            <tr>
+                <td class="description">Currency: </td>
+                <td class="value">${item.currencies[0].code}</td>
+            </tr>
+            <tr>
+                <td class="description">Timezone: </td>
+                <td class="value">${item.timezones}</td>
+            </tr>
+            <tr>
+                <td class="informations" colspan="2"></td>
+            </tr>
+        </table>
+`)
+        table.appendTo(countriesList);
     });
 }

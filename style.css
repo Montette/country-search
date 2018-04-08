@@ -39,7 +39,7 @@ input {
 .country {
     margin: 0 auto;
     margin-top: 50px;
-    width: 700px;
+    width:700px;
 }
 
 .name {
@@ -73,6 +73,7 @@ input {
     width: 400px;
     color: #414858;
     padding: 10px;
+    word-wrap: break-word;
 }
 
 .description {
