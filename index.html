@@ -19,6 +19,49 @@
         <div id="countries">
         </div>
         <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+        <script id="country" type="text/x-handlebars-template">
+            <table class="country">
+                <tr class="row">
+                    <td>
+                        <img src={{flag}} alt="" class="flag">
+                    </td>
+                    <td class="name">{{name}}</td>
+                </tr>
+                <tr>
+                    <td class="informations" colspan="2">Background Informations</td>
+                </tr>
+                <tr>
+                    <td class="description">Capital: </td>
+                    <td class="value">{{capital}}</td>
+                </tr>
+                <tr>
+                    <td class="description">Area: </td>
+                    <td class="value">{{area}} km<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td class="description">Population: </td>
+                    <td class="value">{{population}}</td>
+                </tr>
+                <tr>
+                    <td class="description">Languages: </td>
+                    <td class="value">{{language}}</td>
+                </tr>
+                <tr>
+                    <td class="description">Currency: </td>
+                    <td class="value">{{currency}}</td>
+                </tr>
+                <tr>
+                    <td class="description">Timezone: </td>
+                    <td class="value">{{timezones}}</td>
+                </tr>
+                <tr>
+                    <td class="informations" colspan="2"></td>
+                </tr>
+            </table>
+        </script>
+
         <script src="script.js"></script>
     </div>
 </body>
